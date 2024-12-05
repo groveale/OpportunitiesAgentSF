@@ -1,0 +1,91 @@
+openapi: 3.0.2
+info:
+  title: Opportunities Management API
+  version: '1.0'
+  description: API for managing opportunity records
+servers:
+  - url: https://ag-customer-api.azurewebsites.net/
+paths:
+  /opportunities:
+    get:
+      summary: Get all opportunities
+      operationId: GetAllOpportunities
+      tags:
+        - Opportunity
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Opportunity'
+    post:
+      summary: Create a new opportunity
+      operationId: CreateOpportunity
+      tags:
+        - Opportunity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Opportunity'
+      responses:
+        '201':
+          description: Opportunity created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Opportunity'
+components:
+  schemas:
+    Opportunity:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the opportunity
+        account:
+          type: string
+          description: Name of the account associated with the opportunity
+        territory:
+          type: string
+          description: Territory of the opportunity
+        probability:
+          type: number
+          format: float
+          description: Probability of closing the opportunity
+        stageName:
+          type: string
+          description: Current stage of the opportunity
+        amount:
+          type: number
+          format: float
+          description: Monetary value of the opportunity
+        currency:
+          type: string
+          description: Currency of the opportunity amount
+        owner:
+          type: string
+          description: Owner of the opportunity
+        dateCreated:
+          type: string
+          format: date-time
+          description: Date and time when the opportunity was created
+        closeDate:
+          type: string
+          format: date-time
+          description: Expected or actual close date of the opportunity
+        serviceLine:
+          type: string
+          description: Service line associated with the opportunity
+        parentAccountId:
+          type: integer
+          description: Identifier of the parent account
+      required:
+        - account
+        - stageName
+        - amount
+        - parentAccountId

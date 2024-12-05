@@ -1,0 +1,33 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.2/schema.json",
+    "version": "v1.2",
+    "name": "OpportunitiesAgentSF",
+    "description": "Declarative agent to work with SalesForce opportunities",
+    "instructions": "$[file('instruction.txt')]",
+    "conversation_starters": [
+        {
+            "text": "Get All Opportunities"
+        },
+        {
+            "text": "Create a New Opportunity"
+        },
+        {
+            "text": "Get Opportunity by ID"
+        },
+        {
+            "text": "Update Opportunity"
+        },
+        {
+            "text": "Get Opportunities by Account Name"
+        },
+        {
+            "text": "Get all opportunities"
+        }
+    ],
+    "actions": [
+        {
+            "id": "action_1",
+            "file": "ai-plugin.json"
+        }
+    ]
+}
